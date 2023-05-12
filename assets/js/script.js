@@ -10,10 +10,11 @@ var counter = document.getElementById("counter");
 var score = document.getElementById("score");
 var highscore = document.getElementById("highscore");
 var finalScoreEl = document.getElementById('final-score');
-var highScoresListEl = document.getElementById('highscores-list')
+var highScoresListEl = document.getElementById('highscores-list');
+var initialsEl = document.getElementById('initials');
 
 
-var currentScore = 0;
+var currentScore = countDown;
 var finalScore;
 
 start.addEventListener("click", startQuiz);
@@ -27,44 +28,47 @@ function startQuiz() {
 
 var questions = [
     {
-        question : "What does X equal?",
-        choiceA : "Correct",
-        choiceB : "Wrong",
-        choiceC : "Wrong",
-        choiceD : "Wrong",
+        question : "What does HTML stand for?",
+        choiceA : "HyperText Markup Language",
+        choiceB : "Hyper Typing Mark Lang",
+        choiceC : "Hype Text Mark Long",
+        choiceD : "Hex Type Marking Language",
         correct : "A"
     },
     {
-        question : "What does X equal?",
-        choiceA : "Wrong",
-        choiceB : "Correct",
-        choiceC : "Wrong",
-        choiceD : "Wrong",
+        question : "What does CSS stand for?",
+        choiceA : "Corded Style Smart",
+        choiceB : "Cascading Style Sheets",
+        choiceC : "Compare Style Sheets",
+        choiceD : "Concorded Style Sheets",
         correct : "B"
     },
     {
-        question : "What does X equal?",
-        choiceA : "Wrong",
-        choiceB : "Wrong",
-        choiceC : "Correct",
-        choiceD : "Wrong",
+        question : "What does JS stand for?",
+        choiceA : "Java Smoothie",
+        choiceB : "JavaStand",
+        choiceC : "JavaScript",
+        choiceD : "JavaSmart",
         correct : "C"
     },
     {  
-        question : "What does X equal?",
-        choiceA : "Wrong",
-        choiceB : "Wrong",
-        choiceC : "Wrong",
-        choiceD : "Correct",
+        question : "What is added to make a function?",
+        choiceA : "Semicolon",
+        choiceB : "Quotations",
+        choiceC : "Brackets",
+        choiceD : "Parentheses",
         correct : "D"
     },
     {
-        question : "What does X equal?",
-        choiceA : "Correct",
-        choiceB : "Wrong",
-        choiceC : "Wrong",
-        choiceD : "Correct",
+        question : "What is needed to look at if needing help with coding a project?",
+        choiceA : "A Friend",
+        choiceB : "Bing",
+        choiceC : "Google",
+        choiceD : "Documentation",
         correct : "D"
+    },
+    {
+        question : "End of Quiz"
     }
 ];
 
@@ -75,12 +79,15 @@ var runningQuestion = 0;
 function renderQuestion() {
     var q = questions[runningQuestion];
     //put this on a for loop ... when last question is clicked end quiz
+    
     question.innerHTML = "<p>" + q.question + "</p>"
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
-    
+    if (runningQuestion == 5) {
+        endGame();
+    }
 }
 
 var countDown = 60;
@@ -100,7 +107,10 @@ function startTimer() {
         clearInterval(timerDown);
         endGame();
     }
-
+        if (runningQuestion == 5) {
+            clearInterval(timerDown);
+        }
+    
     }, 1000);
   }
   
@@ -114,18 +124,14 @@ function checkAnswer(answer) {
     }
     if(runningQuestion < lastQuestion) {
         runningQuestion++;
-        renderQuestion();
-    } 
-    if (runningQuestion === questions.length) {
-        countDown = 0;
-        endGame();
-    
-}
+            renderQuestion();
+    }
+} 
+
 
 function endGame() {
-    counter.textContent = 0;
-    changeDiv('quiz', 'results-page');
-    finalScore = currentScore;
+    changeDiv('question', 'results-page');
+    finalScore = countDown;
     finalScoreEl.textContent = finalScore;
 }
 
@@ -161,4 +167,6 @@ function resetScores() {
     populateHighScores();
 }
 
+
 populateHighScores();
+   

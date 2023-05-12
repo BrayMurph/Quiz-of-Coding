@@ -22,7 +22,7 @@
     <main>
        <section>
             
-            <div id="quiz" ">
+            <div id="quiz">
                 <div id="question"></div>
                 
             
@@ -33,8 +33,8 @@
                 <button id="D" class="btn" onclick="checkAnswer('D')"></button>
             </div>
             </div>
-            <div id="score" style="display:none;"></div>
-
+            <div><a href="./highscores.html">High Scores</a></div>
+            <section class="hide">
             <div id="results-page" class="hide">
                 <h2>All done!</h2>
                 <p>Your final score is <span id="final-score"></span>/60</p>
@@ -42,25 +42,12 @@
                 <input type="text" id="initials" size="6">
                 <button id="submit-highscore" class="btn submit-btn" onclick="handleSubmit()">Submit Score</button>
             </div>
+            </section>
             
-            <div class="header">
-                <div><a href="./scores.html">High Scores</a></div>
-                <div>Time Remaining: <span id="timer">0</span></div>
-            </div>
-            <div class="main">
-                <h1>High Scores</h1>
-                <div id="highscores-list">
-                </div>
-                <button class="btn" onclick="window.location.href='./index.html'">Try Again</button>
-                <button class="btn" onclick="resetScores()">Reset Scores</button>
-            </div>
-        
         </section>
     </main>
 
-    <form>
 
-    </form>
     <script src="./assets/js/script.js"></script>
 </body>
 
