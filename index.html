@@ -10,7 +10,6 @@
 </head>
 <body>
     <header>
-        <h1>View Highscore</h1>
         
         <button id="start">Start</button>
 
@@ -28,17 +27,40 @@
                 
             
             <div id="choices">
-                <div id="A" onclick="checkAnswer('A')"></div>
-                <div id="B" onclick="checkAnswer('B')"></div>
-                <div id="C" onclick="checkAnswer('C')"></div>
-                <div id="D" onclick="checkAnswer('D')"></div>
+                <button id="A" class="btn" onclick="checkAnswer('A')"></button>
+                <button id="B" class="btn" onclick="checkAnswer('B')"></button>
+                <button id="C" class="btn" onclick="checkAnswer('C')"></button>
+                <button id="D" class="btn" onclick="checkAnswer('D')"></button>
             </div>
-            <div id="answer"></div>
             </div>
             <div id="score" style="display:none;"></div>
+
+            <div id="results-page" class="hide">
+                <h2>All done!</h2>
+                <p>Your final score is <span id="final-score"></span>/60</p>
+                <label>Enter your initials: </label>
+                <input type="text" id="initials" size="6">
+                <button id="submit-highscore" class="btn submit-btn" onclick="handleSubmit()">Submit Score</button>
+            </div>
+            
+            <div class="header">
+                <div><a href="./scores.html">High Scores</a></div>
+                <div>Time Remaining: <span id="timer">0</span></div>
+            </div>
+            <div class="main">
+                <h1>High Scores</h1>
+                <div id="highscores-list">
+                </div>
+                <button class="btn" onclick="window.location.href='./index.html'">Try Again</button>
+                <button class="btn" onclick="resetScores()">Reset Scores</button>
+            </div>
+        
         </section>
     </main>
 
+    <form>
+
+    </form>
     <script src="./assets/js/script.js"></script>
 </body>
 
